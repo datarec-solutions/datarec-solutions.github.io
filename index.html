@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for music and social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="dark-theme">
     <!-- Background Canvas for Particles -->
@@ -99,6 +101,26 @@
                                         <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                                         </a>
+                                    </div>
+                                    
+                                    <!-- Interactive Now Playing Music Card -->
+                                    <div class="now-playing-card" style="margin-top: 18px; padding: 10px 14px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; box-shadow: inset 0 0 10px rgba(0,0,0,0.4);">
+                                        <div class="music-icon-glow" style="color: #1db954; font-size: 1.2rem; animation: rotateMusic 5s linear infinite; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 0 6px rgba(29, 185, 84, 0.5));">
+                                            <i class="fa-solid fa-compact-disc animate-spin"></i>
+                                        </div>
+                                        <div style="display: flex; flex-direction: column; align-items: flex-start; flex: 1; min-width: 0;">
+                                            <span style="font-size: 0.6rem; letter-spacing: 1.5px; color: #8b5cf6; font-weight: 800; font-family: var(--font-mono); margin-bottom: 2px;">VIBE ATIVA</span>
+                                            <span style="font-size: 0.85rem; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; text-align: left;">Computer God</span>
+                                            <span style="font-size: 0.72rem; color: #a1a1aa; text-align: left;">Black Sabbath</span>
+                                        </div>
+                                        <div style="display: flex; gap: 10px; align-items: center; z-index: 10;">
+                                            <a href="https://open.spotify.com/search/Black%20Sabbath%20Computer%20God" target="_blank" title="Ouvir no Spotify" style="color: #1db954; font-size: 1.15rem; transition: transform 0.2s ease; display: inline-flex;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+                                                <i class="fa-brands fa-spotify"></i>
+                                            </a>
+                                            <a href="https://music.youtube.com/search?q=Black+Sabbath+Computer+God" target="_blank" title="Ouvir no YouTube Music" style="color: #ff0000; font-size: 1.15rem; transition: transform 0.2s ease; display: inline-flex;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+                                                <i class="fa-solid fa-play-circle"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -479,7 +501,7 @@
                                 </div>
                                 <div class="detail-text">
                                     <span>E-mail Profissional</span>
-                                    <a href="mailto:contato@lucasvieira.tech">contato@lucasvieira.tech</a>
+                                    <a href="mailto:datarec.solutions@gmail.com">datarec.solutions@gmail.com</a>
                                 </div>
                             </div>
                             
