@@ -453,4 +453,70 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    
+    /* ==========================================================================
+       10. FORMULÁRIO DE CONTATO INTELIGENTE (AJAX VIA FORMSUBMIT)
+       ========================================================================== */
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+    const submitBtn = document.getElementById('contact-submit');
+
+    if (contactForm && formStatus && submitBtn) {
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            // Set loading state on button and status card
+            submitBtn.disabled = true;
+            const originalBtnHTML = submitBtn.innerHTML;
+            submitBtn.innerHTML = `Enviando... <i class="fa-solid fa-spinner fa-spin" style="margin-left: 8px;"></i>`;
+            
+            formStatus.style.display = 'block';
+            formStatus.style.background = 'rgba(255, 255, 255, 0.04)';
+            formStatus.style.border = '1px solid rgba(255, 255, 255, 0.08)';
+            formStatus.style.color = '#e2e8f0';
+            formStatus.innerHTML = `Processando dados seguros...`;
+
+            // Prepare form data
+            const formData = new FormData(contactForm);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            try {
+                // Post asynchronously to FormSubmit's AJAX endpoint
+                const response = await fetch('https://formsubmit.co/ajax/lucas.ti.temp@gmail.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success === 'true') {
+                    // Success State
+                    formStatus.style.background = 'rgba(16, 185, 129, 0.1)';
+                    formStatus.style.border = '1px solid rgba(16, 185, 129, 0.3)';
+                    formStatus.style.color = '#34d399';
+                    formStatus.innerHTML = `<i class="fa-solid fa-circle-check" style="margin-right: 6px;"></i> Mensagem enviada com sucesso! Verifique sua caixa de entrada para ativação do e-mail.`;
+                    contactForm.reset();
+                } else {
+                    throw new Error('Falha no processamento da API externa.');
+                }
+            } catch (error) {
+                // Error State
+                formStatus.style.background = 'rgba(239, 68, 68, 0.1)';
+                formStatus.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+                formStatus.style.color = '#f87171';
+                formStatus.innerHTML = `<i class="fa-solid fa-circle-xmark" style="margin-right: 6px;"></i> Erro ao enviar. Tente novamente ou use o e-mail acima.`;
+            } finally {
+                // Restore button state
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHTML;
+            }
+        });
+    }
 });

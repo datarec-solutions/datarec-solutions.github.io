@@ -527,29 +527,37 @@
                     </div>
 
                     <div class="contact-form-container glass-card">
-                        <form id="contact-form" onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso! (Simulação de Envio)');">
+                        <form id="contact-form" action="https://formsubmit.co/lucas.ti.temp@gmail.com" method="POST">
+                            <!-- Anti-Spam Hidden Fields -->
+                            <input type="text" name="_honey" style="display:none">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_subject" value="Novo contato do Portfólio Tech!">
+                            
                             <div class="form-group">
-                                <input type="text" id="name" required placeholder=" ">
+                                <input type="text" id="name" name="name" required placeholder=" ">
                                 <label for="name">Seu Nome</label>
                                 <span class="input-line"></span>
                             </div>
 
                             <div class="form-group">
-                                <input type="email" id="email" required placeholder=" ">
+                                <input type="email" id="email" name="email" required placeholder=" ">
                                 <label for="email">Seu E-mail</label>
                                 <span class="input-line"></span>
                             </div>
 
                             <div class="form-group">
-                                <textarea id="message" required rows="5" placeholder=" "></textarea>
+                                <textarea id="message" name="message" required rows="5" placeholder=" "></textarea>
                                 <label for="message">Mensagem</label>
                                 <span class="input-line"></span>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-glow btn-full">
+                            <button type="submit" id="contact-submit" class="btn btn-primary btn-glow btn-full">
                                 Enviar Mensagem
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-svg"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                             </button>
+                            
+                            <!-- Custom Glassmorphic Status Alert Block -->
+                            <div id="form-status" style="margin-top: 15px; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; display: none; text-align: center; font-weight: 500; transition: all 0.3s ease;"></div>
                         </form>
                     </div>
                 </div>
