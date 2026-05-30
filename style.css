@@ -444,7 +444,9 @@ body.light-theme .moon-icon { display: block; }
     color: var(--text-muted);
     margin-bottom: 24px;
     font-family: var(--font-mono);
-    min-height: 4.5rem; /* Evita que a página pule quando o texto quebra linha */
+    height: 90px; /* Altura fixa evita que a página pule */
+    display: flex;
+    align-items: flex-start;
 }
 
 .hero-subtitle span#typewriter {
