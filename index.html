@@ -490,7 +490,7 @@
                     </div>
 
                     <div class="contact-form-container glass-card">
-                        <form id="contact-form" action="https://formsubmit.co/iaforus90@gmail.com" method="POST">
+                        <form id="contact-form">
                             <!-- Security and FormSubmit configs -->
                             <input type="hidden" name="_captcha" value="false"> <!-- reCAPTCHA pode bloquear AJAX, desativado temporariamente em prol da UX, FormSubmit ainda tem filtro de spam -->
                             <input type="hidden" name="_subject" value="Novo Contato B2B - DataREC Solutions">
@@ -522,8 +522,6 @@
                         </form>
 
                         <script>
-                            // TEMPORARILY DISABLED AJAX FOR FORMSUBMIT ACTIVATION
-                            /*
                             document.getElementById('contact-form').addEventListener('submit', function(e) {
                                 e.preventDefault();
                                 
@@ -575,7 +573,6 @@
                                     btnIcon.style.display = 'inline-block';
                                 });
                             });
-                            */
                         </script>
                     </div>
                 </div>
