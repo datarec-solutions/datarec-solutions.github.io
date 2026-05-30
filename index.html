@@ -490,22 +490,27 @@
                     </div>
 
                     <div class="contact-form-container glass-card">
-                        <form id="contact-form" onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso! Retornaremos em breve.');">
+                        <form id="contact-form" action="https://formsubmit.co/ioforus90@gmail.com" method="POST">
+                            <!-- Security and FormSubmit configs -->
+                            <input type="hidden" name="_captcha" value="true"> <!-- reCAPTCHA anti-spam -->
+                            <input type="hidden" name="_subject" value="Novo Contato B2B - DataREC Solutions">
+                            <input type="hidden" name="_template" value="table">
+                            
                             <div class="form-group">
-                                <input type="text" id="name" required placeholder=" ">
-                                <label for="name">Seu Nome</label>
+                                <input type="text" id="name" name="Nome" required placeholder=" ">
+                                <label for="name">Seu Nome / Empresa</label>
                                 <span class="input-line"></span>
                             </div>
 
                             <div class="form-group">
-                                <input type="email" id="email" required placeholder=" ">
-                                <label for="email">Seu E-mail</label>
+                                <input type="email" id="email" name="Email" required placeholder=" ">
+                                <label for="email">Seu E-mail Corporativo</label>
                                 <span class="input-line"></span>
                             </div>
 
                             <div class="form-group">
-                                <textarea id="message" required rows="5" placeholder=" "></textarea>
-                                <label for="message">Descreva o problema ou serviço</label>
+                                <textarea id="message" name="Mensagem" required rows="5" placeholder=" "></textarea>
+                                <label for="message">Descreva o escopo do problema ou projeto</label>
                                 <span class="input-line"></span>
                             </div>
 
