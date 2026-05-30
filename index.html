@@ -7,13 +7,13 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://avatars.githubusercontent.com https://img.shields.io; connect-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://avatars.githubusercontent.com https://img.shields.io; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co;">
     <title>DataREC Solutions | Lucas Vieira - Técnico em TI & Infraestrutura</title>
     <meta name="description" content="DataREC Solutions - Lucas Vieira. Técnico em TI com +15 anos de experiência em suporte técnico, manutenção, recuperação de dados, redes e infraestrutura. Itapetininga, SP.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -68,8 +68,8 @@
         <section id="hero" class="hero-section">
             <div class="container hero-container">
                 <div class="hero-content">
-                    <div class="badge-glow animate-fade-in">
-                        <span class="pulse-dot"></span> Disponível para novos projetos e atendimentos
+                    <div class="badge-status animate-fade-in">
+                        <span class="pulse-dot-green"></span> DISPONÍVEL PARA NOVOS PROJETOS
                     </div>
                     <h1 class="hero-title animate-fade-in-up">
                         <span class="gradient-text">DataREC Solutions</span>
@@ -455,7 +455,7 @@
                                 </div>
                                 <div class="detail-text">
                                     <span>E-mail</span>
-                                    <a href="mailto:ioforus90@gmail.com">ioforus90@gmail.com</a>
+                                    <a href="mailto:iaforus90@gmail.com">iaforus90@gmail.com</a>
                                 </div>
                             </div>
 
@@ -490,7 +490,7 @@
                     </div>
 
                     <div class="contact-form-container glass-card">
-                        <form id="contact-form">
+                        <form id="contact-form" action="https://formsubmit.co/iaforus90@gmail.com" method="POST">
                             <!-- Security and FormSubmit configs -->
                             <input type="hidden" name="_captcha" value="false"> <!-- reCAPTCHA pode bloquear AJAX, desativado temporariamente em prol da UX, FormSubmit ainda tem filtro de spam -->
                             <input type="hidden" name="_subject" value="Novo Contato B2B - DataREC Solutions">
@@ -522,6 +522,8 @@
                         </form>
 
                         <script>
+                            // TEMPORARILY DISABLED AJAX FOR FORMSUBMIT ACTIVATION
+                            /*
                             document.getElementById('contact-form').addEventListener('submit', function(e) {
                                 e.preventDefault();
                                 
@@ -540,8 +542,11 @@
 
                                 const formData = new FormData(form);
 
-                                fetch('https://formsubmit.co/ajax/ioforus90@gmail.com', {
+                                fetch('https://formsubmit.co/ajax/iaforus90@gmail.com', {
                                     method: 'POST',
+                                    headers: {
+                                        'Accept': 'application/json'
+                                    },
                                     body: formData
                                 })
                                 .then(response => response.json())
@@ -570,6 +575,7 @@
                                     btnIcon.style.display = 'inline-block';
                                 });
                             });
+                            */
                         </script>
                     </div>
                 </div>
@@ -581,7 +587,7 @@
     <footer class="footer">
         <div class="container footer-container">
             <p>&copy; 2026 <strong>DataREC Solutions</strong> — Lucas Vieira. Todos os direitos reservados.</p>
-            <p class="footer-attribution">Interior de São Paulo &middot; ioforus90@gmail.com</p>
+            <p class="footer-attribution">Interior de São Paulo &middot; iaforus90@gmail.com</p>
         </div>
         <button id="scroll-top" class="scroll-top-btn" aria-label="Voltar ao topo">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
