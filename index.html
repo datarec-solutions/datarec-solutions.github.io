@@ -490,9 +490,9 @@
                     </div>
 
                     <div class="contact-form-container glass-card">
-                        <form id="contact-form" action="https://formsubmit.co/ioforus90@gmail.com" method="POST">
+                        <form id="contact-form">
                             <!-- Security and FormSubmit configs -->
-                            <input type="hidden" name="_captcha" value="true"> <!-- reCAPTCHA anti-spam -->
+                            <input type="hidden" name="_captcha" value="false"> <!-- reCAPTCHA pode bloquear AJAX, desativado temporariamente em prol da UX, FormSubmit ainda tem filtro de spam -->
                             <input type="hidden" name="_subject" value="Novo Contato B2B - DataREC Solutions">
                             <input type="hidden" name="_template" value="table">
                             
@@ -514,11 +514,63 @@
                                 <span class="input-line"></span>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-glow btn-full">
-                                Enviar Mensagem
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-svg"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            <button type="submit" id="submit-btn" class="btn btn-primary btn-glow btn-full" style="position: relative; overflow: hidden;">
+                                <span id="btn-text">Enviar Mensagem</span>
+                                <svg id="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-svg"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                             </button>
+                            <div id="form-status" style="margin-top: 15px; text-align: center; font-weight: bold; display: none; padding: 10px; border-radius: 5px;"></div>
                         </form>
+
+                        <script>
+                            document.getElementById('contact-form').addEventListener('submit', function(e) {
+                                e.preventDefault();
+                                
+                                const form = e.target;
+                                const btn = document.getElementById('submit-btn');
+                                const btnText = document.getElementById('btn-text');
+                                const btnIcon = document.getElementById('btn-icon');
+                                const statusDiv = document.getElementById('form-status');
+                                
+                                // Estado de carregamento
+                                btn.disabled = true;
+                                btn.style.opacity = '0.7';
+                                btnText.innerText = 'Enviando...';
+                                btnIcon.style.display = 'none';
+                                statusDiv.style.display = 'none';
+
+                                const formData = new FormData(form);
+
+                                fetch('https://formsubmit.co/ajax/ioforus90@gmail.com', {
+                                    method: 'POST',
+                                    body: formData
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if(data.success) {
+                                        statusDiv.innerHTML = "✅ Mensagem enviada com sucesso! Retornaremos em breve.";
+                                        statusDiv.style.color = "#4ade80"; // Verde
+                                        statusDiv.style.backgroundColor = "rgba(74, 222, 128, 0.1)";
+                                        statusDiv.style.display = 'block';
+                                        form.reset();
+                                    } else {
+                                        throw new Error("Erro no servidor");
+                                    }
+                                })
+                                .catch(error => {
+                                    statusDiv.innerHTML = "❌ Ocorreu um erro ao enviar. Tente novamente mais tarde.";
+                                    statusDiv.style.color = "#f87171"; // Vermelho
+                                    statusDiv.style.backgroundColor = "rgba(248, 113, 113, 0.1)";
+                                    statusDiv.style.display = 'block';
+                                })
+                                .finally(() => {
+                                    // Restaura botão
+                                    btn.disabled = false;
+                                    btn.style.opacity = '1';
+                                    btnText.innerText = 'Enviar Mensagem';
+                                    btnIcon.style.display = 'inline-block';
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
