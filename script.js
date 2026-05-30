@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
        2. EFEITO DE DIGITAÇÃO (TYPEWRITER)
        ========================================================================== */
     const typewriterEl = document.getElementById('typewriter');
-    const words = ["desenvolvedor full stack", "administrador de sistemas", "especialista em redes & linux", "técnico em infraestrutura"];
+    const words = ["Técnico em Suporte & Infraestrutura", "Especialista em Recuperação de Dados", "Administrador de Sistemas Windows & Linux", "Configuração de Redes & Cabeamento"];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
